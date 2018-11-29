@@ -1,0 +1,15 @@
+<div class="node">
+  <div #head (click)="toggle()" class="head" [ngClass]="{'clickable': node.Children}">
+    <i *ngIf="node.Children" class="fas" [ngClass]="{'fa-chevron-right': !node.IsOpen,
+     'fa-chevron-down': node.IsOpen}"></i>
+    <span class="badge badge-secondary font-italic indent">{{node.Code}}</span>
+    <span class="indent" [ngClass]="{'font-weight-bold': node.KeywordMatch}">{{node.Name}}
+    </span>
+  </div>
+  <div class="body">
+    <ng-container *ngIf="node.Children && node.IsOpen">
+      <tree-node *ngFor="let childNode of node.Children" [node]="childNode">
+      </tree-node>
+    </ng-container>
+  </div>
+</div>
