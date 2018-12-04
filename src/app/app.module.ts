@@ -1,3 +1,4 @@
+import { DataService } from './data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,9 +11,9 @@ import { TreeModule } from 'projects/tree/src/public_api';
   ],
   imports: [
     BrowserModule,
-    TreeModule
+    TreeModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

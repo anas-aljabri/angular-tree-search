@@ -23,7 +23,6 @@ export class TreeComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.globals.originalTree = this.data;
     this.globals.cloneTree = JSON.parse(JSON.stringify(this.globals.originalTree));
 

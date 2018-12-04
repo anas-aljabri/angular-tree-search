@@ -5,3 +5,4 @@
 export * from './lib/tree.service';
 export * from './lib/tree.component';
 export * from './lib/tree.module';
+export * from './lib/node/node';

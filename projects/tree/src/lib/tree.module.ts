@@ -4,12 +4,11 @@ import { NodeComponent } from './node/node.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Globals } from './globals';
-import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [TreeComponent, NodeComponent],
-  providers: [Globals, DataService],
+  providers: [Globals],
   imports: [
     CommonModule,
     FormsModule,

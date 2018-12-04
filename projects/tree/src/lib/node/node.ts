@@ -8,8 +8,3 @@ export class Node {
     KeywordMatch?: boolean = false;
     IsOpen?: boolean = false;
 }
-
-export class Field {
-    Name: string;
-    Width: string;
-}
