@@ -1,6 +1,20 @@
 {
-  "name": "tree",
-  "version": "0.0.1",
+  "name": "angulare-tree-search",
+  "version": "1.0.1-beta",
+  "description": "angular-tree-search is an angular component for displaying tree-structure elements with an interactive search functionality.",
+  "author": "Anas Aljabri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anas-aljabri/angular-tree-search"
+  },
+  "keywords": [
+    "angular",
+    "javascript",
+    "tree",
+    "search",
+    "filter"
+  ],
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"
