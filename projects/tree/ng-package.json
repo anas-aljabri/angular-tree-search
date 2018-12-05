@@ -3,5 +3,9 @@
   "dest": "../../dist/tree",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+    "whitelistedNonPeerDependencies": [
+      "@fortawesome/fontawesome-free",
+      "bootstrap"
+    ]
 }
