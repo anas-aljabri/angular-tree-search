@@ -1,0 +1,28 @@
+[
+    {
+        "Id": "104268",
+        "Name": "Fresh",
+        "Fields": [
+            {
+                "Name": "50",
+                "Width": "50%"
+            }
+        ],
+        "Children": [
+            {
+                "Id": "113925",
+                "Name": "Vegetables",
+                "Children": [
+                    {
+                        "Id": "113955",
+                        "Name": "Potatoes"
+                    },
+                    {
+                        "Id": "113964",
+                        "Name": "Onions, Leeks & Garlic"
+                    }
+                ]
+            }
+        ]
+    }
+]

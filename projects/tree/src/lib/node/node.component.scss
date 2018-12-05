@@ -1,0 +1,28 @@
+$indent: 1rem;
+
+.indent {
+  margin-left: $indent;
+}
+
+.node {
+  margin-left: $indent;
+
+  .head {
+    border-bottom: 1px solid #dee2e6 !important;
+    overflow: hidden;
+    display: flex;
+
+    div {
+      padding: 0 .2rem 0 .2rem;
+      width: 100%
+    }
+
+    .chevron-container {
+      width: 1.4rem;
+    }
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
