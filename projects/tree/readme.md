@@ -62,7 +62,7 @@ export class AppComponent {
 
 ### Prerequisites
 
-For IE please refer to angular refills.
+For IE please refer to angular polyfills.
 
 ### License
 
