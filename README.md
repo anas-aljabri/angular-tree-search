@@ -1,27 +1,69 @@
-# AngularTreeSearch
+# angular-tree-search
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+An easy to use angular component to show tree structured data with powerful search/filter facility. 
 
-## Development server
+### Installing
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Simple!
 
-## Code scaffolding
+```
+$ npm install --save angular-tree-search
+```
+### Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+https://anasaljabri.azurewebsites.net/angular-tree-search/
 
-## Build
+### Get Started!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+In your .html file
 
-## Running unit tests
+```
+<tree [data]="data" *ngIf="tree"></tree>
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+In your .ts file
 
-## Running end-to-end tests
+```
+export class AppComponent {
+  data: Node[]; 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  constructor() {
+      this.data =  [{
+        "Id": "104268",
+        "Name": "Fresh",
+        "Fields": [
+            {
+                "Name": "50",
+                "Width": "50%"
+            }
+        ],
+        "Children": [
+            {
+                "Id": "113925",
+                "Name": "Vegetables",
+                "Children": [
+                    {
+                        "Id": "113955",
+                        "Name": "Potatoes"
+                    },
+                    {
+                        "Id": "113964",
+                        "Name": "Onions, Leeks & Garlic"
+                    }
+                ]
+            }]}]
+  }
+}
+```
 
-## Further help
+### Dependencies
+ * Bootstrap <code>V4</code>
+ * FontAwesome <code>V5</code>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Prerequisites
+
+For IE please refer to angular polyfills.
+
+### License
+
+MIT
