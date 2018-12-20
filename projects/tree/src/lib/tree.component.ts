@@ -26,6 +26,10 @@ export class TreeComponent implements OnInit {
   //  2 default value
   @Input('minCharSearch') minCharSearch: number = 2;
 
+  //  search box placehoder
+  //  'search' default value
+  @Input('placeholder') placeholder: string = 'search..';
+
   constructor(private _globals: Globals) {
     this.globals = this._globals;
     this.searchCtrl = new FormControl();
