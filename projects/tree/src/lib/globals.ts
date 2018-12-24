@@ -12,32 +12,40 @@ export class Globals {
         return keyword.length > 0 && text.toLowerCase().indexOf(keyword) > -1;
     }
 
-    filterTree(tree: Node[], keyword: string): Node[] {
+    filterTree(tree: Node[], keyword: string): FilterTreeResult {
+        let foundMatches = 0;
+
         //  If the entry is empty string return the full tree without filtering and update the matches
         if (keyword.length == 0)
-            return tree;
+            return {
+                "Tree": tree,
+                "FoundMatches": foundMatches
+            };
 
-        return tree.filter(function filterCallback(node) {
-            //  Check if the keyword is contained in the Title of the root node
+        //  Filtering here..
+        tree = tree.filter(function filterCallback(node) {
+            //  Check if the keyword is contained in the name of the root node
             //  If yes, return the entire node
             if (node.Name.toLocaleLowerCase().indexOf(keyword) > -1) {
                 node.KeywordMatch = true;
+                foundMatches++;
 
                 //  Check for other matches in children, to set the 'IsOpen' and 'KeywordMatch' properties
                 if (node.Children) {
-                let matchesLookup = (node: Node) => {
-                    if (node.Children) {
-                        for (let child of node.Children) {
-                            if (child.Name.toLocaleLowerCase().indexOf(keyword) > -1) {
-                                child.KeywordMatch = true;
-                                node.IsOpen = true;
+                    let matchesLookup = (node: Node) => {
+                        if (node.Children) {
+                            for (let child of node.Children) {
+                                if (child.Name.toLocaleLowerCase().indexOf(keyword) > -1) {
+                                    child.KeywordMatch = true;
+                                    foundMatches++;
+                                    node.IsOpen = true;
+                                }
+                                matchesLookup(child);
                             }
-                            matchesLookup(child);
                         }
                     }
-                }
 
-                matchesLookup(node)
+                    matchesLookup(node)
                 }
 
                 return true;
@@ -55,5 +63,15 @@ export class Globals {
                     node.KeywordMatch = false;
                 }
         });
+
+        return {
+            "Tree": tree,
+            "FoundMatches": foundMatches
+        }
     }
+}
+
+interface FilterTreeResult {
+    Tree: Node[];
+    FoundMatches: number;
 }
