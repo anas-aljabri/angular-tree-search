@@ -17,9 +17,11 @@ export class AppComponent implements OnInit {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
       this.tree = result;
 
-      this.addSalesToBottomChildren(this.tree);
+      this.addSalesToLowestChildren(this.tree);
 
-      this.calcTotals(this.tree);
+      this.tree.forEach(node => {
+        this.calcTotals(node);
+      });
 
       console.log(this.tree)
 
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  addSalesToBottomChildren(tree: Node[]) {
+  addSalesToLowestChildren(tree: Node[]) {
     RecursiveLoop(tree);
 
     function RecursiveLoop(currentTree: Node[]) {
@@ -43,15 +45,21 @@ export class AppComponent implements OnInit {
 
   calcTotals(node: Node) {
     if (node.Children) {
-      node.Children.forEach(child => {
-        if (!child.Children[1].Children) {
-          // node['sales'] = node.Children.map(child => )
+      if(node.Children){
+        if (node.Children[0]['Sales']) {
+          node['Sales'] = node.Children.map(child => {
+            return child['Sales'];
+          }).reduce((acc, current) => {
+              acc + current;
+            });
+
+          console.log(node);
         }
 
         else {
-          this.calcTotals(child);
-         }
-      })
+          this.calcTotals(node);
+        }
+      }
     }
 
   }
