@@ -17,19 +17,17 @@ export class AppComponent implements OnInit {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
       this.tree = result;
 
-      this.addSalesToLowestChildren(this.tree);
+      this.addSalesToLowestLevelChildren(this.tree);
 
-      this.tree.forEach(node => {
-        this.calcTotals(node);
-      });
+      this.calcAccumulatedTotals(this.tree);
 
-      console.log(this.tree)
+      console.log(this.tree);
 
       this.saveFile('data - sales.json', JSON.stringify(this.tree));
     });
   }
 
-  addSalesToLowestChildren(tree: Node[]) {
+  addSalesToLowestLevelChildren(tree: Node[]) {
     RecursiveLoop(tree);
 
     function RecursiveLoop(currentTree: Node[]) {
@@ -43,25 +41,31 @@ export class AppComponent implements OnInit {
     }
   }
 
-  calcTotals(node: Node) {
-    if (node.Children) {
-      if(node.Children){
-        if (node.Children[0]['Sales']) {
-          node['Sales'] = node.Children.map(child => {
-            return child['Sales'];
-          }).reduce((acc, current) => {
-              acc + current;
-            });
+  calcAccumulatedTotals(tree: Node[]) {
+    tree.forEach(node => {
+      if (node.Children) {
 
-          console.log(node);
+        //  To check that all children have the sales field
+        let allChildrenHaveSales = true;
+
+        node.Children.forEach(child => {
+          if (!child['Sales']) {
+            allChildrenHaveSales = false;
+          }
+        });
+
+        if (!allChildrenHaveSales) {
+          this.calcAccumulatedTotals(node.Children);
         }
 
-        else {
-          this.calcTotals(node);
-        }
+        node['Sales'] = node.Children.map(child => {
+          return child['Sales']
+        }).reduce((current, acc) => {
+          return current + acc;
+        });
       }
     }
-
+    )
   }
 
   saveFile(fileName: string, fileBody: string) {
