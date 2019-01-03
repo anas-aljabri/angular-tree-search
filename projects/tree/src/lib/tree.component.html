@@ -2,5 +2,6 @@
 
 <div *ngIf="foundMatches" class="mb-4">Found matches: <span class="badge badge-info">{{foundMatches}}</span></div>
 
+<ng-content></ng-content>
 <tree-node *ngFor="let node of globals.cloneTree" [node]="node">
 </tree-node>

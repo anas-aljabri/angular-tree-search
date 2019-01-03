@@ -14,7 +14,14 @@ $indent: 1rem;
 
     div {
       padding: 0 .2rem 0 .2rem;
-      width: 100%
+      // width: 100%
+    }
+
+    .field{
+      margin-left: auto;
+      border-left: 1px solid #dee2e6;
+      width: 10%;
+      // text-align: right;
     }
 
     .chevron-container {

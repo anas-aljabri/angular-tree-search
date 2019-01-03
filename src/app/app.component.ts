@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
       this.tree = result;
 
-      this.addSalesToLowestLevelChildren(this.tree);
+      this.addSalesFieldToLowestLevelChildren(this.tree);
 
       this.calcAccumulatedTotals(this.tree);
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  addSalesToLowestLevelChildren(tree: Node[]) {
+  addSalesFieldToLowestLevelChildren(tree: Node[]) {
     RecursiveLoop(tree);
 
     function RecursiveLoop(currentTree: Node[]) {
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
           RecursiveLoop(node.Children);
         }
         else
-          node['Sales'] = Math.random() * 100000;
+          node['Fields'] = [ Math.round(Math.random() * 100000)] 
       })
     }
   }
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
         let allChildrenHaveSales = true;
 
         node.Children.forEach(child => {
-          if (!child['Sales']) {
+          if (!child['Fields']) {
             allChildrenHaveSales = false;
           }
         });
@@ -58,11 +58,13 @@ export class AppComponent implements OnInit {
           this.calcAccumulatedTotals(node.Children);
         }
 
-        node['Sales'] = node.Children.map(child => {
-          return child['Sales']
+        let salesValue = node.Children.map(child => {
+          return child['Fields'][0]
         }).reduce((current, acc) => {
           return current + acc;
         });
+
+        node['Fields'] = [salesValue] 
       }
     }
     )
