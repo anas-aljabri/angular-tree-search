@@ -14,14 +14,7 @@ $indent: 1rem;
 
     div {
       padding: 0 .2rem 0 .2rem;
-      // width: 100%
-    }
-
-    .field{
-      margin-left: auto;
-      border-left: 1px solid #dee2e6;
-      width: 5rem;
-      text-align: right;
+      width: 100%
     }
 
     .chevron-container {
@@ -41,7 +34,7 @@ $indent: 1rem;
   // src: url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot");
   src:
   //  url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"),
-    url("fa-solid-900.woff2") format("woff2"),
+    url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"),
     // url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff") format("woff"),
     // url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf") format("truetype"),
     // url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg#fontawesome") format("svg");

@@ -7,7 +7,7 @@
     <span class="badge badge-secondary font-italic indent">{{node.Code}}</span>
     <div [ngClass]="{'font-weight-bold': node.KeywordMatch}">{{node.Name}}
     </div>
-    <div *ngFor="let field of node.Fields; let i = index" class="field" [ngClass]="'field-'+i">{{field}}</div>
+    <div *ngFor="let field of node.Fields; let i = index" class="field" [ngClass]="'field-'+i">{{field | number}}</div>
   </div>
   <div #body>
     <ng-container *ngIf="node.Children && node.IsOpen">
