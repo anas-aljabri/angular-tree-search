@@ -1,6 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="m-5">
-    <tree [data]="tree" [debounceTime]="200" *ngIf="tree"></tree>
+<div id="tree-container" class="tree-container p-2 m-3">
+    <tree [data]="tree" [debounceTime]="200" *ngIf="tree">
+        <div style="width: 7rem; margin-left: auto; font-weight: bold; text-align: center" class="border rounded-top">Sales</div>
+        <!-- <div id="fieldsHeader" class="mt-4 flex-row d-flex">
+            <div class="w-10 bg-dark p-1 text-center rounded-left border-top border-left text-white" *ngFor="let fieldHeader of fieldsHeader">
+                {{fieldHeader.Name}}
+            </div>
+        </div> -->
+    </tree>
 </div>
-
-
