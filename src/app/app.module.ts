@@ -4,16 +4,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TreeModule } from 'projects/tree/src/public_api';
+import { DecimalPipe, PercentPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     TreeModule,
   ],
-  providers: [DataService],
+  providers: [DataService, DecimalPipe, PercentPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

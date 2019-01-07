@@ -1,6 +1,8 @@
 import { Node } from 'projects/tree/src/lib/node/node';
 import { DataService } from './data.service';
 import { Component, OnInit } from '@angular/core';
+import { DecimalPipe, PercentPipe } from '@angular/common';
+import { RecurseVisitor } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,8 @@ export class AppComponent implements OnInit {
   title = 'angular-tree-search';
   tree: Node[];
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private decimalPipe: DecimalPipe
+    , private percentPipe: PercentPipe) {
   }
 
   ngOnInit() {
@@ -21,9 +24,15 @@ export class AppComponent implements OnInit {
 
       this.calcAccumulatedTotals(this.tree);
 
+      let grandToal = this.calcGrandTotal(this.tree);
+
+      this.addPercentField(this.tree, grandToal);
+
+      this.formatFields(this.tree);
+
       console.log(this.tree);
 
-      this.saveFile('data - sales.json', JSON.stringify(this.tree));
+      // this.saveFile('data - sales.json', JSON.stringify(this.tree));
     });
   }
 
@@ -36,7 +45,7 @@ export class AppComponent implements OnInit {
           RecursiveLoop(node.Children);
         }
         else
-          node['Fields'] = [ Math.round(Math.random() * 100000)] 
+          node['Fields'] = [Math.round(Math.random() * 100000)]
       })
     }
   }
@@ -64,10 +73,49 @@ export class AppComponent implements OnInit {
           return current + acc;
         });
 
-        node['Fields'] = [salesValue] 
+        node['Fields'] = [salesValue]
       }
     }
     )
+  }
+
+  calcGrandTotal(tree: Node[]): number {
+    let grandTotal = 0;
+
+    Recursive(tree);
+
+    function Recursive(currentTree: Node[]) {
+      currentTree.forEach(node => {
+        if (node.Children) {
+          Recursive(node.Children);
+        }
+
+        grandTotal += node['Fields'][0];
+      })
+    }
+
+    return grandTotal;
+  }
+
+  addPercentField(currentTree: Node[], grandTotal: number) {
+    currentTree.forEach(node => {
+      if (node.Children) {
+        this.addPercentField(node.Children, grandTotal);
+      }
+
+      node['Fields'].push(node['Fields'][0] / grandTotal);
+    });
+  }
+
+  formatFields(currentTree: Node[]) {
+    currentTree.forEach(node => {
+      if (node.Children) {
+        this.formatFields(node.Children);
+      }
+
+      node['Fields'][0] = this.decimalPipe.transform(node['Fields'][0]);
+      node['Fields'][1] = this.percentPipe.transform(node['Fields'][1]);
+    });
   }
 
   saveFile(fileName: string, fileBody: string) {
