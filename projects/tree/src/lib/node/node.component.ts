@@ -9,11 +9,7 @@ import { Node } from './node'
 })
 
 export class NodeComponent {
-    @Input('node') node: Node;
-    
-    //  Head and body background colors of the node
-    @Input('headBGColor') headBGColor: string = 'Transparent';
-    @Input('bodyBGColor') bodyBGColor: string = 'Transparent';
+    @Input('node') node: Node
 
     constructor(private globals: Globals) {
     }

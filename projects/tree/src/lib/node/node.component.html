@@ -1,5 +1,5 @@
 <div class="node">
-  <div (click)="toggle()" class="head" [ngClass]="{'clickable': node.Children}" [ngStyle]="{ 'background-color': headBGColor }">
+  <div (click)="toggle()" class="head" [ngClass]="{'clickable': node.Children}">
     <div class="chevron-container">
       <i *ngIf="node.Children" class="fas" [ngClass]="{'fa-chevron-right': !node.IsOpen,
      'fa-chevron-down': node.IsOpen}"></i>
