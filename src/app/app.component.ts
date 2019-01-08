@@ -2,7 +2,6 @@ import { Node } from 'projects/tree/src/lib/node/node';
 import { DataService } from './data.service';
 import { Component, OnInit } from '@angular/core';
 import { DecimalPipe, PercentPipe } from '@angular/common';
-import { RecurseVisitor } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-root',
@@ -82,17 +81,21 @@ export class AppComponent implements OnInit {
   calcGrandTotal(tree: Node[]): number {
     let grandTotal = 0;
 
-    Recursive(tree);
+    tree.forEach(node => {
+      grandTotal += node['Fields'][0];
+      });
 
-    function Recursive(currentTree: Node[]) {
-      currentTree.forEach(node => {
-        if (node.Children) {
-          Recursive(node.Children);
-        }
+    // Recursive(tree);
 
-        grandTotal += node['Fields'][0];
-      })
-    }
+    // function Recursive(currentTree: Node[]) {
+    //   currentTree.forEach(node => {
+    //     if (node.Children) {
+    //       Recursive(node.Children);
+    //     }
+
+    //     grandTotal += node['Fields'][0];
+    //   })
+    // }
 
     return grandTotal;
   }
@@ -114,7 +117,7 @@ export class AppComponent implements OnInit {
       }
 
       node['Fields'][0] = this.decimalPipe.transform(node['Fields'][0]);
-      node['Fields'][1] = this.percentPipe.transform(node['Fields'][1]);
+      node['Fields'][1] = this.percentPipe.transform(node['Fields'][1], '1.2');
     });
   }
 
