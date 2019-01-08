@@ -14,7 +14,21 @@ export class TreeComponent implements OnInit {
 
   globals: Globals;
 
+  foundMatches: number;
+
   @Input('data') data: Node[];
+
+  //  In milliseconds
+  //  400 default value
+  @Input('debounceTime') debounceTime: number = 400;
+
+  //  start filtering only after n+ charecters
+  //  2 default value
+  @Input('minCharSearch') minCharSearch: number = 2;
+
+  //  search box placehoder
+  //  'search' default value
+  @Input('placeholder') placeholder: string = 'search..';
 
   constructor(private _globals: Globals) {
     this.globals = this._globals;
@@ -28,10 +42,16 @@ export class TreeComponent implements OnInit {
 
 
     //  Subscribe the filter to the keyword change
-    this.globals.keyword$.pipe(debounceTime(400)).subscribe(keywordTxt => {
-      this.globals.cloneTree = JSON.parse(JSON.stringify(this.globals.originalTree));
+    this.globals.keyword$.pipe(debounceTime(this.debounceTime)).subscribe(keywordTxt => {
+      if (keywordTxt.length >= this.minCharSearch || keywordTxt.length == 0) {
+        this.globals.cloneTree = JSON.parse(JSON.stringify(this.globals.originalTree));
 
-      this.globals.cloneTree = this.globals.filterTree(this.globals.cloneTree, keywordTxt);
+        let filterTreeResult = this.globals.filterTree(this.globals.cloneTree, keywordTxt);
+
+        this.globals.cloneTree = filterTreeResult.Tree;
+
+        this.foundMatches = filterTreeResult.FoundMatches;
+      }
     });
   }
 }

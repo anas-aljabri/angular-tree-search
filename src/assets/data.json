@@ -1,7 +1,6 @@
  [{
          "Id": "104268",
          "Name": "Fresh",
-         "Fields": [{ "Name": "50", "Width": "50%" }],
          "Children": [{
              "Id": "113925",
              "Name": "Vegetables",

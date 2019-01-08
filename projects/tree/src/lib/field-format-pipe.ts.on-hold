@@ -1,0 +1,26 @@
+import {
+    Pipe, PipeTransform
+} from '@angular/core';
+import { DecimalPipe, PercentPipe } from '@angular/common';
+
+
+@Pipe({
+    name: 'fieldFormat'
+})
+export class FieldFormatPipe implements PipeTransform {
+
+    public constructor(private decimalPipe: DecimalPipe
+        , private percentPipe: PercentPipe) {
+    }
+
+    transform(value: number | string, selectedFormat: string): number | string {
+        if (selectedFormat == 'number')
+        {
+            return this.decimalPipe.transform(value);
+        }
+        else if (selectedFormat == 'percent')
+        {
+            return this.percentPipe.transform(value);
+        }
+    }
+}

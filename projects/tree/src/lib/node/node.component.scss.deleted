@@ -1,4 +1,4 @@
-$indent: 1.5rem;
+$indent: 1rem;
 
 .indent {
   margin-left: $indent;
@@ -12,16 +12,9 @@ $indent: 1.5rem;
     overflow: hidden;
     display: flex;
 
-    .fields-container {
-      display: flex;
-      margin-left: auto;
-
-      .field {
-        padding: 0 .3rem 0 .3rem;
-        border-left: 1px solid #dee2e6;
-        width: 7rem;
-        text-align: right;
-      }
+    div {
+      padding: 0 .2rem 0 .2rem;
+      width: 100%
     }
 
     .chevron-container {
@@ -40,8 +33,8 @@ $indent: 1.5rem;
   font-weight: 900;
   // src: url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot");
   src:
-    //  url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"),
-    url("fa-solid-900.woff2") format("woff2"),
+  //  url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"),
+    url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"),
     // url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff") format("woff"),
     // url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf") format("truetype"),
     // url("../../../../../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg#fontawesome") format("svg");

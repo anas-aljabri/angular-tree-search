@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 // @import url("../node_modules/@fortawesome/fontawesome-free/css/all.min.css");
+
+.tree-container {
+    overflow: auto;
+    height: 35rem;
+    border: 1px solid silver;
+    border-radius: 0.35rem;
+}
+
+#field0 {
+    text-align: center !important;
+}

@@ -7,4 +7,5 @@ export class Node {
     Code?: string;
     KeywordMatch?: boolean = false;
     IsOpen?: boolean = false;
+    Fields?: any[];
 }

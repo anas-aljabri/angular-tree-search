@@ -1,5 +1,5 @@
 <div class="node">
-  <div #head (click)="toggle()" class="head" [ngClass]="{'clickable': node.Children}" [ngStyle]="{ 'background-color': headBGColor }">
+  <div (click)="toggle()" class="head" [ngClass]="{'clickable': node.Children}" [ngStyle]="{ 'background-color': headBGColor }">
     <div class="chevron-container">
       <i *ngIf="node.Children" class="fas" [ngClass]="{'fa-chevron-right': !node.IsOpen,
      'fa-chevron-down': node.IsOpen}"></i>
@@ -7,8 +7,11 @@
     <span class="badge badge-secondary font-italic indent">{{node.Code}}</span>
     <div [ngClass]="{'font-weight-bold': node.KeywordMatch}">{{node.Name}}
     </div>
+    <div class="fields-container">
+      <div *ngFor="let field of node.Fields; let i = index" class="field" [ngClass]="'field-'+i">{{field}}</div>
+    </div>
   </div>
-  <div #body>
+  <div class="body">
     <ng-container *ngIf="node.Children && node.IsOpen">
       <tree-node *ngFor="let childNode of node.Children" [node]="childNode">
       </tree-node>
