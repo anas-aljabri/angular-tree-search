@@ -5,7 +5,7 @@ import { Node } from './node'
 @Component({
     selector: 'tree-node',
     templateUrl: './node.component.html',
-    styleUrls: ['./styles/node.component.scss']
+    styleUrls: ['../styles/node.component.scss']
 })
 
 export class NodeComponent {

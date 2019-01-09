@@ -1,8 +1,10 @@
 <div id="header" class="bg-white">
-    <input class="form-control mb-2 mt-2" #searchControl type="text" [placeholder]="placeholder" [formControl]="searchCtrl">
-
-    <div *ngIf="foundMatches" class="mb-4">Found matches: <span class="badge badge-info">{{foundMatches}}</span></div>
+    <div class="search">
+        <input class="form-control mb-2 mt-2" #searchControl type="text" [placeholder]="placeholder" [formControl]="searchCtrl">
+        <i class="fas fa-search search-ico"></i>
+        <span *ngIf="foundMatches" class="found-matches badge badge-primary">{{foundMatches}} matches</span>
+    </div>
 </div>
 <ng-content></ng-content>
-<tree-node *ngFor="let node of globals.cloneTree" [node]="node">
+<tree-node *ngFor="let node of cloneTree" [node]="node">
 </tree-node>

@@ -4,10 +4,6 @@ import { Node } from './node/node'
 
 @Injectable()
 export class Globals {
-    originalTree: Node[];
-    cloneTree: Node[];
-    keyword$: Observable<string>;
-
     contains(text: string, keyword: string): boolean {
         return keyword.length > 0 && text.toLowerCase().indexOf(keyword) > -1;
     }
