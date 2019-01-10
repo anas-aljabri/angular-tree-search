@@ -1,24 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div id="tree-container" class="tree-container p-2 m-3">
-    <tree [data]="basicTree" *ngIf="tree">
-        <!-- <div style="display: flex; font-weight: bold; text-align: center; top: 0; position: sticky; background-color: white">
-            <div style="width: 7rem; padding: 0 .2rem 0 .2rem; margin-left: auto;
-             border: 1px solid #dee2e6; border-right: 0; border-top-left-radius: 0.25rem">Sales</div>
-            <div style="width: 7rem; padding: 0 .2rem 0 .2rem; 
-                border: 1px solid #dee2e6; border-top-right-radius: 0.25rem">%
-                of Total</div>
-        </div> -->
-    </tree>
-</div>
-
-<div id="tree-container" class="tree-container p-2 m-3">
-    <tree [data]="tree" [debounceTime]="200" *ngIf="tree">
-        <div style="display: flex; font-weight: bold; text-align: center; top: 0; position: sticky; background-color: white">
-            <div style="width: 7rem; padding: 0 .2rem 0 .2rem; margin-left: auto;
-             border: 1px solid #dee2e6; border-right: 0; border-top-left-radius: 0.25rem">Sales</div>
-            <div style="width: 7rem; padding: 0 .2rem 0 .2rem; 
-                border: 1px solid #dee2e6; border-top-right-radius: 0.25rem">%
-                of Total</div>
+<h1><a id="Basic_usage_0"></a>Basic usage</h1>
+<h4><a id="In_your_componenthtml_1"></a><em>In your component.html</em></h4>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">tree</span> [<span class="hljs-attribute">data</span>]=<span class="hljs-value">"basicTree"</span> *<span class="hljs-attribute">ngIf</span>=<span class="hljs-value">"tree"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tree</span>&gt;</span>
+</code></pre>
+<div class="container">
+    <div class="example">
+        <div class="ex-heading">
+            <h2>Basic usage</h2>
         </div>
-    </tree>
+        <div class="ex-body">
+            <div id="tree-container" class="tree-container p-2">
+                <tree [data]="basicTree" *ngIf="tree">
+                </tree>
+            </div>
+        </div>
+    </div>
+    <div id="tree-container" class="tree-container p-2">
+        <tree [data]="tree" [debounceTime]="200" *ngIf="tree">
+            <div style="display: flex; font-weight: bold; text-align: center; top: 0; position: sticky; background-color: white">
+                <div style="width: 7rem; padding: 0 .2rem 0 .2rem; margin-left: auto;
+             border: 1px solid #dee2e6; border-right: 0; border-top-left-radius: 0.25rem">Sales</div>
+                <div style="width: 7rem; padding: 0 .2rem 0 .2rem; 
+                border: 1px solid #dee2e6; border-top-right-radius: 0.25rem">%
+                    of Total</div>
+            </div>
+        </tree>
+    </div>
 </div>

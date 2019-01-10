@@ -20,12 +20,8 @@ export class AppComponent implements OnInit {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
 
       this.basicTree = JSON.parse(JSON.stringify(result));
-      console.log(this.basicTree)
       this.tree = JSON.parse(JSON.stringify(result));
 
-      //#region basic tree
-
-      //#endregion 
 
       this.addSalesFieldToLowestLevelChildren(this.tree);
 
