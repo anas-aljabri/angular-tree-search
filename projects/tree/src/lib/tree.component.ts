@@ -3,14 +3,20 @@ import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { Globals } from './globals';
 import { Node } from './node/node';
+import { Observable } from "rxjs";
 
 
 @Component({
   selector: 'tree',
-  templateUrl: './tree.component.html'
+  templateUrl: './tree.component.html',
+  styleUrls: ['./styles/tree.component.scss']
 })
 export class TreeComponent implements OnInit {
   searchCtrl: FormControl;
+
+  originalTree: Node[];
+  cloneTree: Node[];
+  keyword$: Observable<string>;
 
   globals: Globals;
 
@@ -33,22 +39,24 @@ export class TreeComponent implements OnInit {
   constructor(private _globals: Globals) {
     this.globals = this._globals;
     this.searchCtrl = new FormControl();
-    this.globals.keyword$ = this.searchCtrl.valueChanges;
+    this.keyword$ = this.searchCtrl.valueChanges;
   }
 
   ngOnInit() {
-    this.globals.originalTree = this.data;
-    this.globals.cloneTree = JSON.parse(JSON.stringify(this.globals.originalTree));
+    this.originalTree = this.data;
+    this.cloneTree = JSON.parse(JSON.stringify(this.originalTree));
 
 
     //  Subscribe the filter to the keyword change
-    this.globals.keyword$.pipe(debounceTime(this.debounceTime)).subscribe(keywordTxt => {
-      if (keywordTxt.length >= this.minCharSearch || keywordTxt.length == 0) {
-        this.globals.cloneTree = JSON.parse(JSON.stringify(this.globals.originalTree));
+    this.keyword$.pipe(debounceTime(this.debounceTime)).subscribe(keywordTxt => {
+      // Resetting..
+      this.cloneTree = JSON.parse(JSON.stringify(this.originalTree));
+      this.foundMatches = 0;
 
-        let filterTreeResult = this.globals.filterTree(this.globals.cloneTree, keywordTxt);
+      if (keywordTxt.length >= this.minCharSearch) {
+        let filterTreeResult = this.globals.filterTree(this.cloneTree, keywordTxt);
 
-        this.globals.cloneTree = filterTreeResult.Tree;
+        this.cloneTree = filterTreeResult.Tree;
 
         this.foundMatches = filterTreeResult.FoundMatches;
       }

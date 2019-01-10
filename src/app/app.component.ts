@@ -9,6 +9,7 @@ import { DecimalPipe, PercentPipe } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'angular-tree-search';
+  basicTree: Node[];
   tree: Node[];
 
   constructor(private dataService: DataService, private decimalPipe: DecimalPipe
@@ -17,7 +18,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
-      this.tree = result;
+
+      this.basicTree = JSON.parse(JSON.stringify(result));
+      console.log(this.basicTree)
+      this.tree = JSON.parse(JSON.stringify(result));
+
+      //#region basic tree
+
+      //#endregion 
 
       this.addSalesFieldToLowestLevelChildren(this.tree);
 
@@ -28,8 +36,6 @@ export class AppComponent implements OnInit {
       this.addPercentField(this.tree, grandToal);
 
       this.formatFields(this.tree);
-
-      console.log(this.tree);
 
       // this.saveFile('data - sales.json', JSON.stringify(this.tree));
     });

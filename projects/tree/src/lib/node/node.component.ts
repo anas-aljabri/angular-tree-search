@@ -5,15 +5,11 @@ import { Node } from './node'
 @Component({
     selector: 'tree-node',
     templateUrl: './node.component.html',
-    styleUrls: ['./styles/node.component.scss']
+    styleUrls: ['../styles/node.component.scss']
 })
 
 export class NodeComponent {
-    @Input('node') node: Node;
-    
-    //  Head and body background colors of the node
-    @Input('headBGColor') headBGColor: string = 'Transparent';
-    @Input('bodyBGColor') bodyBGColor: string = 'Transparent';
+    @Input('node') node: Node
 
     constructor(private globals: Globals) {
     }
