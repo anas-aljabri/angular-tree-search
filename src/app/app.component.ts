@@ -9,7 +9,6 @@ import { DecimalPipe, PercentPipe } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'angular-tree-search';
-  basicTree: Node[];
   tree: Node[];
 
   constructor(private dataService: DataService, private decimalPipe: DecimalPipe
@@ -19,7 +18,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
 
-      this.basicTree = JSON.parse(JSON.stringify(result));
       this.tree = JSON.parse(JSON.stringify(result));
 
 
