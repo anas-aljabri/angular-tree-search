@@ -6,8 +6,7 @@ import { PercentPipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'with-fields',
-  templateUrl: './with-fields.component.html',
-  styleUrls: ['./with-fields.component.scss']
+  templateUrl: './with-fields.component.html'
 })
 export class WithFieldsComponent implements OnInit {
   tree: Node[];

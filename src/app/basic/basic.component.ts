@@ -4,8 +4,7 @@ import { DataService } from '../data.service';
 
 @Component({
   selector: 'basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss']
+  templateUrl: './basic.component.html'
 })
 export class BasicComponent implements OnInit {
   tree: Node[];

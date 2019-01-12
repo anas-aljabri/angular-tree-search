@@ -14,11 +14,11 @@
 
     .main-container {
       width: 100%;
-      padding-right: 15px;
-      padding-left: 15px;
+      padding-right: 25px;
+      padding-left: 25px;
       margin-right: auto;
       margin-left: auto;
-      margin-top: 15px;
+      margin-top: 25px;
     }
 
     code {
@@ -2059,8 +2059,8 @@
 
     p {
       padding-top: .66001rem;
-      -webkit-font-feature-settings: 'kern'1, 'onum'1, 'liga'1;
-      font-feature-settings: 'kern'1, 'onum'1, 'liga'1;
+      /* -webkit-font-feature-settings: 'kern'1, 'onum'1, 'liga'1;
+      font-feature-settings: 'kern'1, 'onum'1, 'liga'1; */
       margin-top: 0
     }
 
@@ -2897,22 +2897,51 @@
     .settings li {
       line-height: 1
     }
+
+    .loading {
+      color: red;
+    }
   </style>
 </head>
 
 <body>
   <div class="main-container">
-    <h2><a id="_Basic_usage_example__0"></a>Basic usage example</h1>
-              <hr />
-      <p><em>The data used in the demo is taken from Morrisons website category menu.</em><br>
+    <h2><a id="_Tree_with_added_fields_example__4701"></a>Tree with added fields example</h2>
+    <p><em>The data used in the demo is taken from the Morrisons website category menu.</em><br>
+      <em>The sales figures are just randomly generated numbers.</em><br>
+      <a target="_blank" href="assets/data - sales.json">Click here to view/download the data file</a><br><br>
+      <with-fields><span class="loading">Loading..</span></with-fields>
+      <h4><a id="In_your_componenthtml_4705"></a><em>In your component.html</em></h4>
+      <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">tree</span> [<span class="hljs-attribute">data</span>]=<span class="hljs-value">"tree"</span> [<span class="hljs-attribute">debounceTime</span>]=<span class="hljs-value">"200"</span> *<span class="hljs-attribute">ngIf</span>=<span class="hljs-value">"tree"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Place your heading content here - there is allocated placeholder
+       between the search bar and the tree --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"display: flex; font-weight: bold; text-align: center; top: 0;
+     position: sticky; background-color: white"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 7rem; padding: 0 .2rem 0 .2rem; margin-left: auto;
+         border: 1px solid #dee2e6; border-right: 0; border-top-left-radius: 0.25rem"</span>&gt;</span>Sales<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 7rem; padding: 0 .2rem 0 .2rem; 
+            border: 1px solid #dee2e6; border-top-right-radius: 0.25rem"</span>&gt;</span>%
+      of Total<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tree</span>&gt;</span>
+</code></pre>
+      <h4><a id="In_your_componentts_4720"></a><em>In your component.ts</em></h4>
+      <pre><code class="language-typescript"><span class="hljs-comment">//  The code is exactly the same as the one in the basic usage example.</span>
+<span class="hljs-comment">//  The fields are defined in your data.</span>
+</code></pre>
+      <br>
+      <hr />
+      <h2><a id="_Basic_usage_example__0"></a>Basic usage example</h1>
 
-        <basic></basic>
-        <h4><a id="In_your_componenthtml_3"></a><em>In your component.html</em></h4>
-        <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">tree</span> [<span class="hljs-attribute">data</span>]=<span class="hljs-value">"basicTree"</span> *<span class="hljs-attribute">ngIf</span>=<span class="hljs-value">"tree"</span>&gt;</span>
+        <p><em>The data used in the demo is taken from Morrisons website category menu.</em><br>
+          <a target="_blank" href="assets/data.json">Click here to view/download the data file</a><br><br>
+          <basic><span class="loading">Loading..</span></basic>
+          <h4><a id="In_your_componenthtml_3"></a><em>In your component.html</em></h4>
+          <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">tree</span> [<span class="hljs-attribute">data</span>]=<span class="hljs-value">"basicTree"</span> *<span class="hljs-attribute">ngIf</span>=<span class="hljs-value">"tree"</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">tree</span>&gt;</span>
   </code></pre>
-        <h4><a id="In_your_componentts_8"></a><em>In your component.ts</em></h4>
-        <pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
+          <h4><a id="In_your_componentts_8"></a><em>In your component.ts</em></h4>
+          <pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
   <span class="hljs-keyword">import</span> { Node } from <span class="hljs-string">'projects/tree/src/lib/node/node'</span>;
   <span class="hljs-keyword">import</span> { DataService } from <span class="hljs-string">'../data.service'</span>;
   
@@ -2935,30 +2964,7 @@
     }
   }
   </code></pre>
-        <h4><a id="datajson_33"></a><em>data.json</em></h4>
-        <h1><a id="_Tree_with_added_fields_example__4701"></a>— Tree with added fields example —</h1>
-        <p><em>The data used in the demo is taken from the Morrisons website category menu.</em><br>
-          <em>The sales figures are just randomly generated numbers.</em><br>
-          <with-fields></with-fields>
-          <h4><a id="In_your_componenthtml_4705"></a><em>In your component.html</em></h4>
-          <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">tree</span> [<span class="hljs-attribute">data</span>]=<span class="hljs-value">"tree"</span> [<span class="hljs-attribute">debounceTime</span>]=<span class="hljs-value">"200"</span> *<span class="hljs-attribute">ngIf</span>=<span class="hljs-value">"tree"</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- Place your heading content here - there is allocated placeholder
-         between the search bar and the tree --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"display: flex; font-weight: bold; text-align: center; top: 0;
-       position: sticky; background-color: white"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 7rem; padding: 0 .2rem 0 .2rem; margin-left: auto;
-           border: 1px solid #dee2e6; border-right: 0; border-top-left-radius: 0.25rem"</span>&gt;</span>Sales<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 7rem; padding: 0 .2rem 0 .2rem; 
-              border: 1px solid #dee2e6; border-top-right-radius: 0.25rem"</span>&gt;</span>%
-        of Total<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">tree</span>&gt;</span>
-  </code></pre>
-          <h4><a id="In_your_componentts_4720"></a><em>In your component.ts</em></h4>
-          <pre><code class="language-typescript"><span class="hljs-comment">//  The code is exactly the same as the one in the basic usage example.</span>
-  <span class="hljs-comment">//  The fields are defined in your data.</span>
-  </code></pre>
-          <h4><a id="datajson_4725"></a><em>data.json</em></h4>
+
   </div>
 </body>
 
