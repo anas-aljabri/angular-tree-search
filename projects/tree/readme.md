@@ -58,7 +58,6 @@ export class AppComponent {
 
 ### Dependencies
  * Bootstrap <code>V4</code>
- * FontAwesome <code>V5</code>
 
 ### Prerequisites
 
