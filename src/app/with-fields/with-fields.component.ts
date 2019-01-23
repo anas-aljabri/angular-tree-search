@@ -1,14 +1,14 @@
-import { Node } from 'projects/tree/src/lib/node/node';
-import { DataService } from './data.service';
 import { Component, OnInit } from '@angular/core';
-import { DecimalPipe, PercentPipe } from '@angular/common';
+import { Node } from 'projects/tree/src/lib/node/node';
+import { DataService } from '../data.service';
+import { PercentPipe, DecimalPipe } from '@angular/common';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+  selector: 'with-fields',
+  templateUrl: './with-fields.component.html'
 })
-export class AppComponent implements OnInit {
-  title = 'angular-tree-search';
+export class WithFieldsComponent implements OnInit {
   tree: Node[];
 
   constructor(private dataService: DataService, private decimalPipe: DecimalPipe
@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getTree('./assets/data.json').subscribe(result => {
-
       this.tree = JSON.parse(JSON.stringify(result));
 
 
@@ -84,18 +83,6 @@ export class AppComponent implements OnInit {
     tree.forEach(node => {
       grandTotal += node['Fields'][0];
       });
-
-    // Recursive(tree);
-
-    // function Recursive(currentTree: Node[]) {
-    //   currentTree.forEach(node => {
-    //     if (node.Children) {
-    //       Recursive(node.Children);
-    //     }
-
-    //     grandTotal += node['Fields'][0];
-    //   })
-    // }
 
     return grandTotal;
   }

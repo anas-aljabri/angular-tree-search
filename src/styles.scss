@@ -2,11 +2,31 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 // @import url("../node_modules/@fortawesome/fontawesome-free/css/all.min.css");
 
+.example {
+    border: 1px solid silver;
+    border-radius: 0.35rem;
+    margin: 1rem;
+
+    .ex-heading {
+        color: gray;
+        border-bottom: solid 1px silver;
+        padding: 0.5rem;
+        padding-left: 1rem;
+
+    }
+
+    .ex-body {
+        background-color: #DCDCDC;
+        padding: 0.75rem;
+    }
+}
+
 .tree-container {
     overflow: auto;
     height: 35rem;
     border: 1px solid silver;
     border-radius: 0.35rem;
+    background-color: white;
 }
 
 #field0 {
