@@ -11,7 +11,7 @@ $ npm install --save angular-tree-search
 ```
 ### Demo
 
-https://anasaljabri.azurewebsites.net/angular-tree-search/
+https://anas-aljabri.github.io/angular-tree-search/
 
 ### Get Started!
 
